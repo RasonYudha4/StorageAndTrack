@@ -33,7 +33,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://rasonyudha921:hFUdcbvwkj0ovxXn@cluster0.i0qgf.mongodb.net/'),
+            'dsn' => env('DB_URI', 'mongodb+srv://rasonyudha921:<db_password>@cluster0.i0qgf.mongodb.net/'),
             'database' => 'main',
         ],
 

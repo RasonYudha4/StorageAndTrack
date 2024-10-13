@@ -46,7 +46,7 @@ export default function Welcome({
                 <div className=' h-[42rem] bg-[#a449d1] grid grid-cols-5 grid-rows-4 gap-5'>
                     <div className=' col-start-2 col-span-3 relative'>
                         <h4 className=' absolute top-[10%] left-[20%] text-7xl font-extrabold text-[#540d87]'>Choose Service</h4>
-                        <p className=' absolute top-[60%] left-[17%] text-xl'>You may enjoy the available services that we provide for you!</p>
+                        <p className=' absolute top-[60%] left-[17%] text-xl font-bold text-[#540d87]'>You may enjoy the available services that we provide for you!</p>
                     </div>
                     <Link
                         href={route('login')}
