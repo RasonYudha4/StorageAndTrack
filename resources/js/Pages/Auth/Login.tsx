@@ -81,21 +81,29 @@ export default function Login({
                                 setData('remember', e.target.checked)
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600">
+                        <span className="ms-2 text-sm text-[#540d87]">
                             Remember me
                         </span>
                     </label>
                 </div>
-
-                <div className="mt-4 flex items-center justify-end">
+                <div className=' mt-3'>
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            className=" rounded-md text-sm text-[#540d87] underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
                             Forgot your password?
                         </Link>
                     )}
+                </div>
+                
+                <div className="mt-4 flex items-center justify-end">
+                    <Link
+                        href={route('register')}
+                        className=" rounded-md text-sm text-[#540d87] underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                        Don't have an account yet?
+                    </Link>
 
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
