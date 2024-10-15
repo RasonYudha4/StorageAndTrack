@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
     Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
     Route::delete('/notes/{$note}', [NoteController::class, 'delete'])->name('note.delete');
+
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('task.create');
+    Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
+    Route::post('/tasks', [TaskController::class, 'index'])->name('task.store');
+    Route::delete('/tasks/{$task}', [TaskController::class, 'index'])->name('task.delete');
 });
 
 require __DIR__.'/auth.php';

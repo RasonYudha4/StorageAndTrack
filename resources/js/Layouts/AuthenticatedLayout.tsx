@@ -28,10 +28,22 @@ export default function Authenticated({
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
+                                    href={route('plan.index')}
+                                    active={route().current('plan.index')}
                                 >
-                                    Dashboard
+                                    Plans
+                                </NavLink>
+                                <NavLink
+                                    href={route('note.index')}
+                                    active={route().current('note.index')}
+                                >
+                                    Notes
+                                </NavLink>
+                                <NavLink
+                                    href={route('task.index')}
+                                    active={route().current('task.index')}
+                                >
+                                    Tasks
                                 </NavLink>
                             </div>
                         </div>

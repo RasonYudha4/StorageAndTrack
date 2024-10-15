@@ -1,10 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Note() {
+export default function Task() {
     return (
         <AuthenticatedLayout>
-            <Head title="Note" />
+            <Head title="Task" />
 
             
         </AuthenticatedLayout>
