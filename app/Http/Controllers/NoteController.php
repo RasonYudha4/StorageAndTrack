@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class PlanController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Plan');
+        return Inertia::render('Note');
     }
 
     /**
@@ -20,7 +20,7 @@ class PlanController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**

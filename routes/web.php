@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PlanController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/plans', [PlanController::class, 'index'])->name('plan.index');
     Route::post('/plans', [PlanController::class, 'store'])->name('plan.store');
     Route::delete('/plans/{$plan}', [PlanController::class, 'delete'])->name('plan.delete');
+
+    Route::get('/notes/create', [NoteController::class, 'create'])->name('note.create');
+    Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
+    Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
+    Route::delete('/notes/{$note}', [NoteController::class, 'delete'])->name('note.delete');
 });
 
 require __DIR__.'/auth.php';
