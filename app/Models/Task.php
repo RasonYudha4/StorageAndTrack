@@ -3,19 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Plan extends Model
+class Task extends Model
 {
     use HasFactory;
 
-    protected $collection = 'plans';
-
-    protected $fillable = [
-        'title',
-        'user_id'
-    ];
+    protected $collections = 'tasks';
 
     public function user() : BelongsTo 
     {
