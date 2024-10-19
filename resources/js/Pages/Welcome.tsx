@@ -49,7 +49,7 @@ export default function Welcome({
                         <p className=' absolute top-[60%] left-[17%] text-xl font-bold text-[#540d87]'>You may enjoy the available services that we provide for you!</p>
                     </div>
                     <Link
-                        href={route('login')}
+                        href={route('note.index')}
                         className=' group col-start-2 row-span-2 bg-[#540d87] bg-opacity-25 rounded-xl hover:bg-opacity-50 grid grid-rows-3'>
                         <div className=' relative'>
                             <img src={folder} alt="" className=' absolute w-8 h-8 md:w-16 md:h-16 top-[25%] md:top-[25%] md:left-[37.5%] opacity-100 group-hover:opacity-0' />
@@ -61,7 +61,7 @@ export default function Welcome({
                         </div>
                     </Link>
                     <Link
-                        href={route('login')}
+                        href={route('plan.index')}
                         className=' group col-start-3 row-span-2 bg-[#540d87] bg-opacity-25 rounded-xl hover:bg-opacity-50 grid grid-rows-3'>
                         <div className=' relative'>
                             <img src={plan} alt="" className=' absolute w-8 h-8 md:w-16 md:h-16 top-[25%] md:top-[25%] md:left-[37.5%] opacity-100 group-hover:opacity-0' />
@@ -73,7 +73,7 @@ export default function Welcome({
                         </div>
                     </Link>
                     <Link
-                        href={route('login')}
+                        href={route('task.index')}
                         className=' group col-start-4 row-span-2 bg-[#540d87] bg-opacity-25 rounded-xl hover:bg-opacity-50 grid grid-rows-3'>
                         <div className=' relative'>
                             <img src={tasks} alt="" className=' absolute w-8 h-8 md:w-16 md:h-16 top-[25%] md:top-[25%] md:left-[37.5%] opacity-100 group-hover:opacity-0' />
