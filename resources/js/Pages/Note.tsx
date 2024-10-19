@@ -4,6 +4,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Folder from '../../../public/images/folder.png';
+import Dots from '../../../public/images/dots.png';
 
 interface NoteProps {
     title: string,
@@ -40,26 +41,9 @@ export default function Note({ title, content, writtenDate }: NoteProps) {
                         <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
                             <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
                             <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
-                        </div>
-                        <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
-                            <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
-                            <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
-                        </div>
-                        <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
-                            <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
-                            <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
-                        </div>
-                        <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
-                            <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
-                            <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
-                        </div>
-                        <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
-                            <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
-                            <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
-                        </div>
-                        <div className=' bg-[#a449d1] w-48 mr-4 h-10 rounded-lg flex hover:bg-opacity-40 focus:bg-opacity-40'>
-                            <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
-                            <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
+                            <div className=' my-auto w-5 h-5 ml-16 hover:cursor-pointer'>
+                                <img src={Dots} alt=""/>
+                            </div>
                         </div>
                     </div>
 
