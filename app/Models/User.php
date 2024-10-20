@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use MongoDB\Laravel\Auth\User as Authenticatable;
+use MongoDB\Laravel\Relations\HasMany;
+use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -49,5 +51,15 @@ class User extends Authenticatable
     public function plans() : HasMany
     {
         return $this->hasMany(Plan::class);
+    }
+
+    public function tasks() : HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function notes() : HasMany
+    {
+        return $this->hasMany(Note::class);
     }
 }
