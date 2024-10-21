@@ -5,6 +5,10 @@ import { Head } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Folder from '../../../public/images/folder.png';
 import Dots from '../../../public/images/dots.png';
+import Modal from '@/Components/Modal';
+import { cloneElement, useState } from 'react';
+import InputLabel from '@/Components/InputLabel';
+import TextInput from '@/Components/TextInput';
 
 interface NoteProps {
     title: string,
@@ -12,6 +16,15 @@ interface NoteProps {
     writtenDate: string
 }
 export default function Note({ title, content, writtenDate }: NoteProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+    
+    function setData(arg0: string, value: string): void {
+        throw new Error('Function not implemented.');
+    }
+
     return (
         <AuthenticatedLayout>
             <Head title="Tasks" />
@@ -48,7 +61,55 @@ export default function Note({ title, content, writtenDate }: NoteProps) {
                     </div>
 
                 </div>
-                <AddButton className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>
+                <Modal show={isModalOpen} onClose={closeModal}>
+                    <div className=' w-[64rem] h-[40rem] bg-[#540d87] relative'>
+                        <p className=' absolute text-7xl font-medium text-white right-[52.5%] top-8'>Add Note</p>
+                        <div className=' absolute top-[8rem] right-[45%] w-[28rem] mt-4'>
+                        <InputLabel htmlFor="email" value="Email" />
+
+<TextInput
+    id="email"
+    type="email"
+    name="email"
+    value={""}
+    className="mt-1 block w-full"
+    autoComplete="username"
+    isFocused={true}
+    onChange={(e) => setData('email', e.target.value)}
+/>
+                        </div>
+                        <div className=' absolute top-[13rem] right-[45%] w-[28rem] mt-4'>
+                        <InputLabel htmlFor="email" value="Email" />
+
+<TextInput
+    id="email"
+    type="email"
+    name="email"
+    value={""}
+    className="mt-1 block w-full"
+    autoComplete="username"
+    isFocused={true}
+    onChange={(e) => setData('email', e.target.value)}
+/>
+                        </div>
+                        <div className=' absolute top-[18rem] right-[45%] w-[28rem] mt-4'>
+                        <InputLabel htmlFor="email" value="Email" />
+
+<TextInput
+    id="email"
+    type="email"
+    name="email"
+    value={""}
+    className="mt-1 block w-full"
+    autoComplete="username"
+    isFocused={true}
+    onChange={(e) => setData('email', e.target.value)}
+/>
+                        </div>
+                    <PrimaryButton className=' absolute bg-black bottom-5 right-16'>Submit</PrimaryButton>
+                    </div>
+                </Modal>
+                <AddButton onClick={openModal} className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>
             </div>
         </AuthenticatedLayout>
     );
