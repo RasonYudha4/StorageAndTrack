@@ -12,12 +12,11 @@ import TextInput from '@/Components/TextInput';
 
 interface NoteProps {
     title: string,
-    content: string,
     writtenDate: string
 }
-export default function Note({ title, content, writtenDate }: NoteProps) {
+export default function Note({ title, writtenDate }: NoteProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
+
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
