@@ -17,10 +17,10 @@ interface NoteProps {
 }
 export default function Note({ title, content, writtenDate }: NoteProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-    
+
     function setData(arg0: string, value: string): void {
         throw new Error('Function not implemented.');
     }
@@ -55,58 +55,31 @@ export default function Note({ title, content, writtenDate }: NoteProps) {
                             <img src={Folder} alt="" className=' h-4 w-4 my-auto ml-3' />
                             <p className=' text-[#540d87] my-auto font-bold ml-3 text-sm'>Folder 3</p>
                             <div className=' my-auto w-5 h-5 ml-16 hover:cursor-pointer'>
-                                <img src={Dots} alt=""/>
+                                <img src={Dots} alt="" />
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <Modal show={isModalOpen} onClose={closeModal}>
-                    <div className=' w-[64rem] h-[40rem] bg-[#540d87] relative'>
-                        <p className=' absolute text-7xl font-medium text-white right-[52.5%] top-8'>Add Note</p>
-                        <div className=' absolute top-[8rem] right-[45%] w-[28rem] mt-4'>
-                        <InputLabel htmlFor="email" value="Email" />
+                    <div className=' w-[64rem] h-72 bg-[#540d87] relative'>
+                        <p className=' absolute text-5xl font-medium text-white right-[56%] top-8'>Add Folder</p>
+                        <div className=' absolute top-[6rem] right-[45%] w-[28rem] mt-4'>
+                            <InputLabel className=' text-white' htmlFor="folder" value="Folder Name" />
 
-<TextInput
-    id="email"
-    type="email"
-    name="email"
-    value={""}
-    className="mt-1 block w-full"
-    autoComplete="username"
-    isFocused={true}
-    onChange={(e) => setData('email', e.target.value)}
-/>
+                            <TextInput
+                                id="folder"
+                                type="text"
+                                name="folder"
+                                value={"ppepepepe"}
+                                className="mt-1 block w-full"
+                                autoComplete="folder name"
+                                isFocused={true}
+                                onChange={(e) => setData('folder', e.target.value)}
+                            />
                         </div>
-                        <div className=' absolute top-[13rem] right-[45%] w-[28rem] mt-4'>
-                        <InputLabel htmlFor="email" value="Email" />
 
-<TextInput
-    id="email"
-    type="email"
-    name="email"
-    value={""}
-    className="mt-1 block w-full"
-    autoComplete="username"
-    isFocused={true}
-    onChange={(e) => setData('email', e.target.value)}
-/>
-                        </div>
-                        <div className=' absolute top-[18rem] right-[45%] w-[28rem] mt-4'>
-                        <InputLabel htmlFor="email" value="Email" />
-
-<TextInput
-    id="email"
-    type="email"
-    name="email"
-    value={""}
-    className="mt-1 block w-full"
-    autoComplete="username"
-    isFocused={true}
-    onChange={(e) => setData('email', e.target.value)}
-/>
-                        </div>
-                    <PrimaryButton className=' absolute bg-black bottom-5 right-16'>Submit</PrimaryButton>
+                        <PrimaryButton className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
                     </div>
                 </Modal>
                 <AddButton onClick={openModal} className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>
