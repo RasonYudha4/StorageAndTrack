@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -28,7 +29,9 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plan = Plan::create([
+            'title' => $request->input('planTitle')
+        ]);
     }
 
     /**

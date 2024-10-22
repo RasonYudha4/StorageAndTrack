@@ -26,20 +26,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/plans/create', [PlanController::class, 'create'])->name('plan.create');
     Route::get('/plans', [PlanController::class, 'index'])->name('plan.index');
     Route::post('/plans', [PlanController::class, 'store'])->name('plan.store');
-    Route::delete('/plans/{$plan}', [PlanController::class, 'delete'])->name('plan.delete');
+    Route::delete('/plans', [PlanController::class, 'destroy'])->name('plan.delete');
 
-    Route::get('/notes/create', [NoteController::class, 'create'])->name('note.create');
     Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
     Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
-    Route::delete('/notes/{$note}', [NoteController::class, 'delete'])->name('note.delete');
+    Route::delete('/notes/{$note}', [NoteController::class, 'destroy'])->name('note.delete');
 
-    Route::get('/tasks/create', [TaskController::class, 'create'])->name('task.create');
     Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
     Route::post('/tasks', [TaskController::class, 'index'])->name('task.store');
-    Route::delete('/tasks/{$task}', [TaskController::class, 'index'])->name('task.delete');
+    Route::delete('/tasks', [TaskController::class, 'destroy'])->name('task.delete');
 });
 
 require __DIR__.'/auth.php';
