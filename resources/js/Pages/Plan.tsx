@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AddButton from '@/Components/AddButton';
-import { Head } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Check from '../../../public/images/check.png';
 import CheckButton from '@/Components/CheckButton';
@@ -11,14 +11,27 @@ import TextInput from '@/Components/TextInput';
 import { useState } from 'react';
 
 export default function Plan() {
+
+    interface PlanFormData {
+        planTitle: string;
+    }
+    
+    const { data, setData, post } = useForm<PlanFormData>({
+        planTitle: ""
+    });
+
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        post(route("/plans"));
+    }
+    const { plans } = usePage().props;
+    console.log(plans);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    function setData(arg0: string, value: string): void {
-        throw new Error('Function not implemented.');
-    }
     return (
         <AuthenticatedLayout>
             <Head title="Tasks" />
@@ -29,6 +42,7 @@ export default function Plan() {
                         <p className='text-white ml-8'>1. Help</p>
                     </div>
                     <Modal show={isModalOpen} onClose={closeModal}>
+                    <form onSubmit={handleSubmit}>
                         <div className=' w-[64rem] h-72 bg-[#540d87] relative'>
                             <p className=' absolute text-5xl font-medium text-white right-[57%] top-8'>Add Plan</p>
                             <div className=' absolute top-[6rem] right-[45%] w-[28rem] mt-4'>
@@ -42,11 +56,12 @@ export default function Plan() {
                                     className="mt-1 block w-full"
                                     autoComplete="planTitle"
                                     isFocused={true}
-                                    onChange={(e) => setData('planTitle', e.target.value)}
+                                    onChange={(e) => setData("planTitle", e.target.value)}
                                 />
                             </div>
-                            <PrimaryButton className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
+                            <PrimaryButton type="submit" className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
                         </div>
+                        </form>
                     </Modal>
                     <AddButton onClick={openModal} className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>
                     <CheckButton className='absolute bottom-10 right-40 h-20 w-20 rounded-full'><img src={Check} alt="" /></CheckButton>

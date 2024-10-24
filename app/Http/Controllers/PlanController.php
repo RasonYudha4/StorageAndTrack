@@ -13,7 +13,8 @@ class PlanController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Plan');
+        $plans = Plan::all();
+        return Inertia::render('Plan', ['plans' => $plans]);
     }
 
     /**
@@ -30,7 +31,7 @@ class PlanController extends Controller
     public function store(Request $request)
     {
         $plan = Plan::create([
-            'title' => $request->input('planTitle')
+            'lanTitle' => $request->input('planTitle')
         ]);
     }
 
