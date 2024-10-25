@@ -10,22 +10,25 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useState } from 'react';
 
-export default function Plan() {
+// Define the types for form data and errors
+interface FormData {
+    title: string;
+}
 
-    interface PlanFormData {
-        planTitle: string;
-    }
-    
-    const { data, setData, post } = useForm<PlanFormData>({
-        planTitle: ""
+interface FormErrors {
+    title?: string;
+}
+
+export default function Plan() {
+    const { data, setData, errors, post } = useForm<FormData>({
+        title: ""
     });
 
+    // Handle form submission
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         post(route("plan.store"));
     }
-    const { plans } = usePage().props;
-    console.log(plans);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -52,11 +55,11 @@ export default function Plan() {
                                     id="planTitle"
                                     type="text"
                                     name="planTitle"
-                                    value={"ppepepepe"}
+                                    value={data.title}
                                     className="mt-1 block w-full"
                                     autoComplete="planTitle"
                                     isFocused={true}
-                                    onChange={(e) => setData("planTitle", e.target.value)}
+                                    onChange={(e) => setData("title", e.target.value)}
                                 />
                             </div>
                             <PrimaryButton type="submit" className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>

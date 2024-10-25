@@ -13,7 +13,7 @@ class Plan extends Model
     protected $collection = 'plans';
 
     protected $fillable = [
-        'planTitle',
+        'title',
         'user_id'
     ];
 
