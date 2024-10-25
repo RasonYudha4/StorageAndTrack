@@ -12,6 +12,11 @@ class Task extends Model
 
     protected $collections = 'tasks';
 
+    protected $fillable = [
+        'title',
+        'desc'
+    ];
+
     public function user() : BelongsTo 
     {
         return $this->belongsTo(User::class);
