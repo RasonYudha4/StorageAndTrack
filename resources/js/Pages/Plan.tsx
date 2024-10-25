@@ -45,7 +45,7 @@ export default function Plan({ plans }: PageProps) {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Tasks" />
+            <Head title="Plans" />
 
             <div className=' relative bg-[#540d87] rounded-xl opacity-70 mx-auto mt-8 max-w-[85rem] min-h-[40rem] px-4 py-8 sm:px-6 lg:px-8'>
                 <div className=' my-auto bg-transparent h-[36rem] overflow-y-auto'>
