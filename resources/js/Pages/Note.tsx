@@ -27,6 +27,7 @@ export default function Note({ title, writtenDate }: NoteProps) {
     return (
         <AuthenticatedLayout>
             <Head title="Note" />
+            <Head title="Notes" />
 
             <div className=' relative bg-[#540d87] bg-opacity-70 rounded-xl text-white mx-auto mt-8 max-w-[85rem] min-h-[40rem] px-4 py-8 sm:px-6 lg:px-8'>
                 <div className=' grid grid-cols-[max-content_1fr] gap-5 my-auto bg-transparent h-[36rem] w-full'>
