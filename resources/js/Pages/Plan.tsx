@@ -22,7 +22,7 @@ export default function Plan() {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("/plans"));
+        post(route("plan.store"));
     }
     const { plans } = usePage().props;
     console.log(plans);
