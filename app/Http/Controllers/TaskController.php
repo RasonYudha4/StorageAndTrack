@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreTaskRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,8 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::latest()->first();
-        return Inertia::render('Task', ['tasks' => $tasks]);
+        $task = Task::latest()->first();
+        return Inertia::render('Task', ['task' => $task]);
     }
 
     /**
@@ -29,7 +29,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest  $request)
+    public function store(StoreTaskRequest  $request)
     {
         Task::create(
             $request->validated()

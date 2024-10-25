@@ -44,13 +44,11 @@ export default function Task({ task }: PageProps) {
     return (
         <AuthenticatedLayout>
             <Head title="Tasks" />
-            <Head title="Tasks" />
 
             <div className=' relative bg-[#540d87] rounded-xl opacity-70 mx-auto mt-8 max-w-[85rem] min-h-[40rem] px-4 py-8 sm:px-6 lg:px-8'>
                 <div className=' my-auto bg-transparent h-[36rem] w-full'>
                     <div className=' flex justify-between '>
                         <div className=' flex'>
-
                             <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Left} alt="" className=' h-6 w-6 m-3 ' /></div>
                             <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Right} alt="" className=' h-6 w-6 m-3 ' /></div>
                         </div>

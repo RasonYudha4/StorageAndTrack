@@ -10,7 +10,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $collections = 'tasks';
+    protected $collection = 'tasks';
 
     protected $fillable = [
         'title',

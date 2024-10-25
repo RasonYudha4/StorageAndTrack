@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StorePlanRequest;
 use Inertia\Inertia;
 
 class PlanController extends Controller
@@ -29,7 +29,7 @@ class PlanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest  $request)
+    public function store(StorePlanRequest  $request)
     {
         Plan::create(
             $request->validated()
