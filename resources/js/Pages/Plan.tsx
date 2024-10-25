@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AddButton from '@/Components/AddButton';
-import { Head, useForm, usePage } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Check from '../../../public/images/check.png';
 import CheckButton from '@/Components/CheckButton';
@@ -45,25 +45,30 @@ export default function Plan() {
                         <p className='text-white ml-8'>1. Help</p>
                     </div>
                     <Modal show={isModalOpen} onClose={closeModal}>
-                    <form onSubmit={handleSubmit}>
-                        <div className=' w-[64rem] h-72 bg-[#540d87] relative'>
-                            <p className=' absolute text-5xl font-medium text-white right-[57%] top-8'>Add Plan</p>
-                            <div className=' absolute top-[6rem] right-[45%] w-[28rem] mt-4'>
-                                <InputLabel className=' text-white' htmlFor="planTitle" value="Plan Title" />
+                        <form onSubmit={handleSubmit}>
+                            <div className=' w-[64rem] h-72 bg-[#540d87] relative'>
+                                <p className=' absolute text-5xl font-medium text-white right-[57%] top-8'>Add Plan</p>
+                                <div className=' absolute top-[6rem] right-[45%] w-[28rem] mt-4'>
+                                    <InputLabel className=' text-white' htmlFor="planTitle" value="Plan Title" />
 
-                                <TextInput
-                                    id="planTitle"
-                                    type="text"
-                                    name="planTitle"
-                                    value={data.title}
-                                    className="mt-1 block w-full"
-                                    autoComplete="planTitle"
-                                    isFocused={true}
-                                    onChange={(e) => setData("title", e.target.value)}
-                                />
+                                    <TextInput
+                                        id="planTitle"
+                                        type="text"
+                                        name="planTitle"
+                                        value={data.title}
+                                        className="mt-1 block w-full"
+                                        autoComplete="planTitle"
+                                        isFocused={true}
+                                        onChange={(e) => setData("title", e.target.value)}
+                                    />
+                                    {errors.title && (
+                                        <span className="text-red-600 text-sm">
+                                            {errors.title}
+                                        </span>
+                                    )}
+                                </div>
+                                <PrimaryButton type="submit" className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
                             </div>
-                            <PrimaryButton type="submit" className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
-                        </div>
                         </form>
                     </Modal>
                     <AddButton onClick={openModal} className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>

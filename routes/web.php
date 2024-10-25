@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlanController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
@@ -40,6 +39,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/tasks', [TaskController::class, 'destroy'])->name('task.delete');
 });
 
-Route::resource('posts', PostController::class);
 
 require __DIR__.'/auth.php';
