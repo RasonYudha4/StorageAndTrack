@@ -14,7 +14,7 @@ class PlanController extends Controller
      */
     public function index()
     {
-        $plans = Plan::all();
+        $plans = Plan::latest()->get();
         return Inertia::render('Plan', ['plans' => $plans]);
     }
 

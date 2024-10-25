@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AddButton from '@/Components/AddButton';
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, usePage } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Check from '../../../public/images/check.png';
 import CheckButton from '@/Components/CheckButton';
@@ -19,7 +19,15 @@ interface FormErrors {
     title?: string;
 }
 
-export default function Plan() {
+interface Plans {
+    title: string;
+}
+
+interface PageProps {
+    plans: Plans[];
+}
+
+export default function Plan({ plans }: PageProps) {
     const { data, setData, errors, post } = useForm<FormData>({
         title: ""
     });
@@ -41,9 +49,22 @@ export default function Plan() {
 
             <div className=' relative bg-[#540d87] rounded-xl opacity-70 mx-auto mt-8 max-w-[85rem] min-h-[40rem] px-4 py-8 sm:px-6 lg:px-8'>
                 <div className=' my-auto bg-transparent h-[36rem] overflow-y-auto'>
+                {plans.length > 0 ? (
+                                plans.map(({title }) => (
                     <div className='bg-[#a449d1] w-full h-12 rounded-3xl mb-8 flex items-center'>
-                        <p className='text-white ml-8'>1. Help</p>
+                        <p className='text-white ml-8'>{title}</p>
                     </div>
+                     ))
+                    ) : (
+                        <tr>
+                            <td
+                                className="px-4 py-2 border-b border-[#a449d1] text-white"
+
+                            >
+                                No Plan found
+                            </td>
+                        </tr>
+                    )}
                     <Modal show={isModalOpen} onClose={closeModal}>
                         <form onSubmit={handleSubmit}>
                             <div className=' w-[64rem] h-72 bg-[#540d87] relative'>
