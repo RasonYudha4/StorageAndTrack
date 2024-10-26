@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import AddButton from '@/Components/AddButton';
-import { Head, useForm, usePage } from '@inertiajs/react';
+import { Head, useForm, usePage, router } from '@inertiajs/react';
 import Plus from '../../../public/images/plus.png';
 import Check from '../../../public/images/check.png';
 import CheckButton from '@/Components/CheckButton';
@@ -9,6 +9,7 @@ import Modal from '@/Components/Modal';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useState } from 'react';
+import axios from 'axios';
 
 // Define the types for form data and errors
 interface FormData {
@@ -21,6 +22,7 @@ interface FormErrors {
 
 interface Plans {
     title: string;
+    created_at? : string
 }
 
 interface PageProps {
@@ -37,6 +39,11 @@ export default function Plan({ plans }: PageProps) {
         e.preventDefault();
         post(route("plan.store"));
     }
+
+    function handleDeque() {
+        router.delete(route("plan.delete"));
+    }
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -93,7 +100,7 @@ export default function Plan({ plans }: PageProps) {
                         </form>
                     </Modal>
                     <AddButton onClick={openModal} className='absolute bottom-10 right-10 h-20 w-20 rounded-full'><img src={Plus} alt="" /></AddButton>
-                    <CheckButton className='absolute bottom-10 right-40 h-20 w-20 rounded-full'><img src={Check} alt="" /></CheckButton>
+                    <CheckButton onClick={handleDeque} className='absolute bottom-10 right-40 h-20 w-20 rounded-full'><img src={Check} alt="" /></CheckButton>
                 </div>
             </div>
         </AuthenticatedLayout>

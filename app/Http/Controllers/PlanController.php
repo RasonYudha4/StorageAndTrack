@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Plan;
+use App\Services\PlanQueue;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePlanRequest;
 use Inertia\Inertia;
 
 class PlanController extends Controller
 {
+    protected $planQueue;
+
+    public function __construct(PlanQueue $planQueue)
+    {
+        $this->planQueue = $planQueue;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $plans = Plan::latest()->get();
+        $plans = $this->planQueue->all();
         return Inertia::render('Plan', ['plans' => $plans]);
     }
 
@@ -31,9 +37,7 @@ class PlanController extends Controller
      */
     public function store(StorePlanRequest  $request)
     {
-        Plan::create(
-            $request->validated()
-        );
+        $plan = $this->planQueue->enqueue($request->validated());
 
     }
 
@@ -64,8 +68,9 @@ class PlanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Date $plan)
     {
-        //
+        $plan = $this->planQueue->dequeue();
+        return Redirect::route('plan.index');
     }
 }
