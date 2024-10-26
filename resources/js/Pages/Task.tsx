@@ -11,18 +11,25 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useState } from 'react';
 
+interface Node {
+    title: string; 
+    desc: string; 
+    next?: Node | null; 
+    prev?: Node | null; 
+}
+
 interface FormData {
     title: string;
     desc: string;
 }
 
-interface Task {
-    title: string;
-    desc: string
-}
+// interface Task {
+//     title: string;
+//     desc: string
+// }
 
 interface PageProps {
-    task: Task;
+    task: Node | null;
 }
 
 export default function Task({ task }: PageProps) {
@@ -30,6 +37,8 @@ export default function Task({ task }: PageProps) {
         title: "",
         desc: ""
     });
+
+    console.log(task);
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -41,6 +50,31 @@ export default function Task({ task }: PageProps) {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    // const [tasks, setTasks] = useState<Task[]>([]);
+    // const [currentNode, setCurrentNode] = useState<number>(0);
+    // const currentTask = tasks[currentNode];
+    // useEffect(() => {
+    //     const fetchTasks = async () => {
+    //         const response = await axios.get<Task[]>('/tasks');
+    //         setTasks(response.data);
+    //     };
+    //     fetchTasks();
+    // }, []);
+
+
+
+    // const nextTask = () => {
+    //     if (currentNode < tasks.length - 1) {
+    //         setCurrentNode(currentNode + 1);
+    //     }
+    // };
+
+    // const prevTask = () => {
+    //     if (currentNode > 0) {
+    //         setCurrentNode(currentNode - 1);
+    //     }
+    // };
+
     return (
         <AuthenticatedLayout>
             <Head title="Tasks" />
@@ -49,8 +83,8 @@ export default function Task({ task }: PageProps) {
                 <div className=' my-auto bg-transparent h-[36rem] w-full'>
                     <div className=' flex justify-between '>
                         <div className=' flex'>
-                            <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Left} alt="" className=' h-6 w-6 m-3 ' /></div>
-                            <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Right} alt="" className=' h-6 w-6 m-3 ' /></div>
+                            <button className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Left} alt="" className=' h-6 w-6 m-3 ' /></button>
+                            <button className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Right} alt="" className=' h-6 w-6 m-3 ' /></button>
                         </div>
                         <div className=' h-10 w-10 m-5 hover:opacity-80'>
                             <img src={Trash} alt="" />
