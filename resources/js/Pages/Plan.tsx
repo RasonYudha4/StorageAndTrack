@@ -9,7 +9,6 @@ import Modal from '@/Components/Modal';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { useState } from 'react';
-import axios from 'axios';
 
 // Define the types for form data and errors
 interface FormData {

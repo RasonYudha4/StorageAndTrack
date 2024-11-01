@@ -9,11 +9,18 @@ use MongoDB\Laravel\Relations\BelongsTo;
 class Note extends Model
 {
     use HasFactory;
-
+    
     protected $collections = 'notes';
 
-    public function user() : BelongsTo 
+    protected $fillable = [
+        'title',
+        'desc',
+        'folder_id',
+    ];
+
+    public function folder()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Folder::class, 'folder_id');
     }
+
 }
