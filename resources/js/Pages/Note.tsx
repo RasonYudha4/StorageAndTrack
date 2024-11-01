@@ -25,17 +25,20 @@ interface NoteProps {
     folders: Folders[]
 }
 
-interface FormData {
+interface folderFormData {
+    title: string,
+    parent_id?: string,
+}
+
+interface noteFormData {
     title: string,
     desc: string,
-    child: []
+    folder_id: string
 }
 
 export default function Note({ folders, notes }: NoteProps) {
     const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
     const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
-
-    const [folderData, setFolderData] = useState({ title: '' });
 
     const [fileData, setFileData] = useState({ title: '', desc: '' });
 
@@ -45,7 +48,7 @@ export default function Note({ folders, notes }: NoteProps) {
     const openFolderModal = () => setIsFolderModalOpen(true);
     const closeFolderModal = () => setIsFolderModalOpen(false);
 
-    const handleFolderSubmit = (e: React.FormEvent) => {
+    function handleFolderSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         post(route("folder.store"));
     };
@@ -55,10 +58,11 @@ export default function Note({ folders, notes }: NoteProps) {
         post(route("note.store"));
     }
 
-    const { data, setData, errors, post } = useForm<FormData>({
+    const { data, setData, errors, post } = useForm<folderFormData | noteFormData>({
         title: "",
+        parent_id: "",
         desc: "",
-        child: []
+        folder_id: "",
     });
 
     return (
@@ -123,15 +127,19 @@ export default function Note({ folders, notes }: NoteProps) {
                                     id="folder"
                                     type="text"
                                     name="folder"
-                                    value={folderData.title}
+                                    value={data.title}
                                     className="mt-1 block w-full"
                                     autoComplete="folder name"
                                     isFocused={true}
-                                    onChange={(e) => setFolderData({ ...folderData, title: e.target.value })}
+                                    onChange={(e) => setData("title", e.target.value)}
                                 />
+                                {errors.title && (
+                                        <span className="text-red-600 text-sm">
+                                            {errors.title}
+                                        </span>
+                                    )}
                             </div>
-
-                            <PrimaryButton className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
+                            <PrimaryButton type="submit" className=' absolute bg-black top-[14rem] right-[62.5%] hover:bg-slate-600'>Submit</PrimaryButton>
                         </div>
                     </form>
                 </Modal>

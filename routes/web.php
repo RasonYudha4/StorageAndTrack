@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
     Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
+    Route::post('/notes', [NoteController::class, 'folderStore'])->name('folder.store');
     Route::delete('/notes/{$note}', [NoteController::class, 'destroy'])->name('note.delete');
 
     Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');

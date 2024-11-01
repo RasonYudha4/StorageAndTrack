@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFolderRequest;
 use App\Http\Requests\StoreNoteRequest;
 use App\Models\Folder;
 use Illuminate\Http\Request;
@@ -16,10 +17,10 @@ class NoteController extends Controller
         // Fetch all notes
         $notes = Note::all();
         // Fetch all folders
-        $folders = Folder::all();
+        // $folders = Folder::all();
         // Build a tree structure
         $tree = $this->buildTree($notes);
-        return Inertia::render('Note', ['tree' => $tree, 'folders' => $folders, 'notes' => $notes]); // Return the tree structure as JSON
+        return Inertia::render('Note', ['tree' => $tree, 'notes' => $notes]); // Return the tree structure as JSON
     }
     // A method to create a tree that takes the value of the notes and parentId
     private function buildTree($notes, $parentId = null)
@@ -43,6 +44,13 @@ class NoteController extends Controller
     public function store(StoreNoteRequest $request)
     {
         Note::create(
+            $request->validated()
+        );
+    }
+
+    public function folderStore(StoreFolderRequest $request) 
+    {
+        Folder::create(
             $request->validated()
         );
     }
