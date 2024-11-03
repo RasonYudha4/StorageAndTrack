@@ -13,7 +13,7 @@ class Folder extends Model
 
     protected $fillable = [
         'title',
-        'parent_id'
+        'folder_id'
     ];
 
     public function notes() 
@@ -21,13 +21,13 @@ class Folder extends Model
         return $this->hasMany(Note::class, 'folder_id');
     }
 
-    public function parent()
+    public function parents()
     {
-        return $this->belongsTo(Folder::class, 'parent_id');
+        return $this->belongsTo(Folder::class, 'folder_id');
     }
 
-    public function children()
+    public function childrens()
     {
-        return $this->hasMany(Folder::class, 'parent_id');
+        return $this->hasMany(Folder::class, 'folder_id');
     }
 }

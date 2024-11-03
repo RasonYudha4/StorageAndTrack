@@ -24,10 +24,7 @@ class StoreNoteRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'desc' => 'nullable|string|max:255',
-            'child' => 'nullable|array',
-            'child.*.title' => 'required_with:child|string|max:255', 
-            'child.*.desc' => 'nullable|string|max:1000', 
-            'child.*.child' => 'nullable|array',
+            'folder_id' => 'nullable|string|max:255'
         ];
     }
 }

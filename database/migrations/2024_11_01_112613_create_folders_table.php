@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('folders', function (Blueprint $collection) {
             $collection->string('title');
-            $collection->index('parent_id');
+            $collection->string('folder_id');
         });
     }
 

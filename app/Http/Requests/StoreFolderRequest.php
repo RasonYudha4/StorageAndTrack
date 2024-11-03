@@ -22,8 +22,8 @@ class StoreFolderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|unique|max:255',
-            'parent_id' => 'nullable|exists:folders,_id'
+            'title' => 'required|string|unique:folders|max:255',
+            'folder_id' => 'nullable|exists:folders,_id'
         ];
     }
 }

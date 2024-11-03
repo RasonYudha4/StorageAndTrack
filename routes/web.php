@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/plans', [PlanController::class, 'destroy'])->name('plan.delete');
 
     Route::get('/notes', [NoteController::class, 'index'])->name('note.index');
-    Route::post('/notes', [NoteController::class, 'store'])->name('note.store');
+    Route::post('/notes/note', [NoteController::class, 'store'])->name('note.store');
     Route::post('/notes', [NoteController::class, 'folderStore'])->name('folder.store');
     Route::delete('/notes/{$note}', [NoteController::class, 'destroy'])->name('note.delete');
 

@@ -17,10 +17,19 @@ class NoteController extends Controller
         // Fetch all notes
         $notes = Note::all();
         // Fetch all folders
-        // $folders = Folder::all();
+        $folders = Folder::all();
         // Build a tree structure
         $tree = $this->buildTree($notes);
-        return Inertia::render('Note', ['tree' => $tree, 'notes' => $notes]); // Return the tree structure as JSON
+        $formattedFolders = $folders->map(function ($folder) {
+            return [
+                'id' => (string) $folder->_id, // Convert ObjectId to string
+                'title' => $folder->title,
+                'folder_id' => $folder->folder_id,
+                'created_at' => $folder->created_at,
+                'updated_at' => $folder->updated_at,
+            ];
+        });
+        return Inertia::render('Note', ['tree' => $tree, 'folders' => $formattedFolders, 'notes' => $notes]); // Return the tree structure as JSON
     }
     // A method to create a tree that takes the value of the notes and parentId
     private function buildTree($notes, $parentId = null)
