@@ -133,7 +133,6 @@ export default function Note({ folders, notes }: NoteProps) {
                             )
                         }
                     </div>
-
                     <div className=' flex flex-wrap w-full p-4'>
                         {filteredNotes.length > 0 ? (
                             filteredNotes.map(note => (
