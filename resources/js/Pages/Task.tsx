@@ -9,26 +9,34 @@ import InputLabel from '@/Components/InputLabel';
 import Modal from '@/Components/Modal';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface FormData {
     title: string;
     desc: string;
+    next: string;
+    prev: string;
 }
 
 interface Task {
     title: string;
-    desc: string
+    desc: string;
+    next: string;
+    prev: string;
 }
 
 interface PageProps {
     task: Task;
+    next: Task;
+    prev: Task;
 }
 
-export default function Task({ task }: PageProps) {
+export default function Task({ task, next, prev }: PageProps) {
     const { data, setData, errors, post } = useForm<FormData>({
         title: "",
-        desc: ""
+        desc: "",
+        next: "",
+        prev: ""
     });
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -37,6 +45,23 @@ export default function Task({ task }: PageProps) {
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentTask, setCurrentTask] = useState(task);
+
+    useEffect(() => {
+        setCurrentTask(task);
+    }, [task]);
+
+    const handleNext = () => {
+        if (next) {
+            setCurrentTask(next);
+        }
+    };
+
+    const handlePrev = () => {
+        if (prev) {
+            setCurrentTask(prev);
+        }
+    };
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -48,9 +73,19 @@ export default function Task({ task }: PageProps) {
             <div className=' relative bg-[#540d87] rounded-xl opacity-70 mx-auto mt-8 max-w-[85rem] min-h-[40rem] px-4 py-8 sm:px-6 lg:px-8'>
                 <div className=' my-auto bg-transparent h-[36rem] w-full'>
                     <div className=' flex justify-between '>
-                        <div className=' flex'>
-                            <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Left} alt="" className=' h-6 w-6 m-3 ' /></div>
-                            <div className=' bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'><img src={Right} alt="" className=' h-6 w-6 m-3 ' /></div>
+                        <div className='flex'>
+                            <div
+                                className='bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'
+                                onClick={handlePrev}
+                            >
+                                <img src={Left} alt="Previous" className='h-6 w-6 m-3' />
+                            </div>
+                            <div
+                                className='bg-[#a449d1] rounded-full h-12 w-12 mt-5 ml-6 hover:bg-[#540d87]'
+                                onClick={handleNext}
+                            >
+                                <img src={Right} alt="Next" className='h-6 w-6 m-3' />
+                            </div>
                         </div>
                         <div className=' h-10 w-10 m-5 hover:opacity-80'>
                             <img src={Trash} alt="" />

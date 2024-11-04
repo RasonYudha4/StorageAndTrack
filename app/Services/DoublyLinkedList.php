@@ -38,6 +38,11 @@ class DoublyLinkedList {
         }
     }
 
+    public function getLast()
+    {
+        return $this->tail; // Return the last task
+    }
+
     public function getCurrent() {
         return $this->current ? $this->current->data : null;
     }
